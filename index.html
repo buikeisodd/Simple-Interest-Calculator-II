@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Interest Calculator</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .input-group { margin-bottom: 10px; }
+        label { display: inline-block; width: 120px; }
+        #result { font-weight: bold; color: green; }
+    </style>
+</head>
+<body>
+
+    <h2>Loan Interest Calculator</h2>
+
+    <div class="input-group">
+        <label>Loan Amount ($):</label>
+        <input type="number" id="principal" placeholder="e.g. 1000">
+    </div>
+
+    <div class="input-group">
+        <label>Interest Rate (%):</label>
+        <input type="number" id="rate" placeholder="e.g. 5">
+    </div>
+
+    <div class="input-group">
+        <label>Time (Years):</label>
+        <input type="number" id="time" placeholder="e.g. 2">
+    </div>
+
+    <button onclick="calculateInterest()">Calculate Interest</button>
+
+    <p>Interest to be paid: $<span id="result">0.00</span></p>
+
+    <script>
+        function calculateInterest() {
+            const p = parseFloat(document.getElementById('principal').value);
+            const r = parseFloat(document.getElementById('rate').value);
+            const t = parseFloat(document.getElementById('time').value);
+
+            // Simple Interest Formula: I = (P * R * T) / 100
+            // We divide by 100 because the rate is entered as a percentage
+            if (p > 0 && r > 0 && t > 0) {
+                const interest = (p * r * t) / 100;
+
+                // Display the result formatted to 2 decimal places
+                document.getElementById('result').innerText = interest.toFixed(2);
+            } else {
+                alert("Please enter valid positive numbers in all fields.");
+            }
+        }
+    </script>
+
+</body>
+</html>
